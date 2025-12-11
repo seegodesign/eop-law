@@ -16,7 +16,7 @@
     "react-dom": "^19.2.0"
   },
   "optionalDependencies": {
-    "@rollup/rollup-linux-x64-gnu": "<YOUR_VERSION_HERE>"
+    "@rollup/rollup-linux-x64-gnu": "4.9.5"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
