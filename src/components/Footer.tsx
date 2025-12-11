@@ -33,17 +33,22 @@ export function Footer() {
           <div>
             <h4 className="text-lg mb-4">Practice Areas</h4>
             <ul className="space-y-2 text-white/70">
-              <li><a href="#" className="hover:text-accent transition-colors">Corporate Law</a></li>
+              <li><a href="#" className="hover:text-accent transition-colors">Business & Finance</a></li>
               <li><a href="#" className="hover:text-accent transition-colors">Real Estate</a></li>
-              <li><a href="#" className="hover:text-accent transition-colors">Family Law</a></li>
-              <li><a href="#" className="hover:text-accent transition-colors">Criminal Defense</a></li>
+              <li><a href="#" className="hover:text-accent transition-colors">Employment</a></li>
+              <li><a href="#" className="hover:text-accent transition-colors">Tax & Estate Planning</a></li>
+              <li><a href="#" className="hover:text-accent transition-colors">Entertainment & New Technologies</a></li>
+              <li><a href="#" className="hover:text-accent transition-colors">Intellectual Property</a></li>
+              <li><a href="#" className="hover:text-accent transition-colors">Litigation & Appellate Practices</a></li>
+              <li><a href="#" className="hover:text-accent transition-colors">Insurance</a></li>
+              <li><a href="#" className="hover:text-accent transition-colors">Affordable Housing Development & Financing</a></li>
             </ul>
           </div>
 
           <div>
             <h4 className="text-lg mb-4">Company</h4>
             <ul className="space-y-2 text-white/70">
-              <li><a href="#about" className="hover:text-accent transition-colors">About Us</a></li>
+              <li><a href="#about" className="hover:text-accent transition-colors">About The Firm</a></li>
               <li><a href="#team" className="hover:text-accent transition-colors">Our Team</a></li>
               <li><a href="#" className="hover:text-accent transition-colors">Careers</a></li>
               <li><a href="#contact" className="hover:text-accent transition-colors">Contact</a></li>

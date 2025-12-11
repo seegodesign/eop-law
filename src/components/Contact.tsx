@@ -90,7 +90,7 @@ export function Contact() {
                 <input
                   type="text"
                   id="name"
-                  className="w-full px-6 py-4 border placeholder focus:outline-none focus:border-accent"
+                  className="w-full px-6 py-4 border placeholder focus:outline-none focus:border-accent bg-white"
                   placeholder="John Doe"
                 />
               </div>
@@ -100,7 +100,7 @@ export function Contact() {
                 <input
                   type="email"
                   id="email"
-                  className="w-full px-6 py-4 border placeholder focus:outline-none focus:border-accent"
+                  className="w-full px-6 py-4 border placeholder focus:outline-none focus:border-accent bg-white"
                   placeholder="john@example.com"
                 />
               </div>
@@ -110,7 +110,7 @@ export function Contact() {
                 <input
                   type="tel"
                   id="phone"
-                  className="w-full px-6 py-4 border placeholder focus:outline-none focus:border-accent"
+                  className="w-full px-6 py-4 border placeholder focus:outline-none focus:border-accent bg-white"
                   placeholder="(555) 123-4567"
                 />
               </div>
@@ -120,7 +120,7 @@ export function Contact() {
                 <textarea
                   id="message"
                   rows={5}
-                  className="w-full px-6 py-4 border placeholder focus:outline-none focus:border-accent resize-none"
+                  className="w-full px-6 py-4 border placeholder focus:outline-none focus:border-accent bg-white resize-none"
                   placeholder="Tell us about your legal needs..."
                 ></textarea>
               </div>

@@ -19,12 +19,12 @@ const practices = [
   },
   {
     icon: FileText,
-    title: 'Tax and Estate Planning',
-    description: 'Comprehensive tax and estate planning services to protect your assets and ensure your wishes are honored.',
+    title: 'Tax & Estate Planning',
+    description: 'Comprehensive tax & Estate planning services to protect your assets and ensure your wishes are honored.',
   },
   {
     icon: Drama,
-    title: 'Entertainment and New Technologies',
+    title: 'Entertainment & New Technologies',
     description: 'Legal expertise in the rapidly evolving fields of entertainment and technology, including intellectual property protection and contract negotiation.',
   },
   {
@@ -34,7 +34,7 @@ const practices = [
   },
   {
     icon: Shield,
-    title: 'Litigation and Appellate Practices',
+    title: 'Litigation & Appellate Practices',
     description: 'Our trial attorneys find effective and efficient resolutions for personal and business disputes.',
   },
   {
@@ -44,7 +44,7 @@ const practices = [
   },
   {
     icon: Scale,
-    title: 'Affordable Housing Development and Financing',
+    title: 'Affordable Housing Development & Financing',
     description: 'Our attorneys provide comprehensive legal support for affordable housing projects, including financing, compliance, and regulatory matters.',
   }
 ];

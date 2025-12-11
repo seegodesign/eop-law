@@ -13,7 +13,7 @@ const team = [
   },
   {
     name: 'Robert J. Preston',
-    role: 'Business, Tax, and Estate Planning',
+    role: 'Business, Tax, & Estate Planning',
     specialty: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
   },
   {
