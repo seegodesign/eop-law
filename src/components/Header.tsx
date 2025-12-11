@@ -6,7 +6,7 @@ const navLinks = [
   { href: '#practice', label: 'Practice Areas' },
   { href: '#about', label: 'About The Firm' },
   { href: '#team', label: 'Our Team' },
-  // { href: '#resources', label: 'Resources' },
+  { href: '#resources', label: 'Resources' },
   { href: '#contact', label: 'Schedule Consultation', class: 'px-8 py-3 bg-primary text-primary-foreground hover:bg-accent hover:text-accent-foreground transition-colors' },
 ];
 
