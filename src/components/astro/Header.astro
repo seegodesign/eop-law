@@ -2,6 +2,11 @@
 import Logo from '../../images/logo.svg';
 import { getCollection } from 'astro:content';
 
+interface Props {
+  transparentAtTop?: boolean;
+}
+const { transparentAtTop = false } = Astro.props;
+
 const practiceAreaItems = (await getCollection('practiceAreas'))
   .sort((a, b) => a.data.title.localeCompare(b.data.title))
   .map((entry) => ({
@@ -22,7 +27,7 @@ const otherNavLinks = [
   {
     href: '/contact-us',
     label: 'Contact',
-    class: 'px-8 py-3 bg-primary text-primary-foreground hover:bg-accent hover:text-accent-foreground transition-colors',
+    class: 'px-8 py-3 bg-accent border border-accent text-primary hover:bg-primary hover:text-white transition-colors',
   },
 ];
 
@@ -39,12 +44,16 @@ const isPracticeAreaActive = currentPath === '/practice-areas' || currentPath.st
 const isAttorneyActive = currentPath === '/our-attorneys' || currentPath.startsWith('/our-attorneys/');
 ---
 
-<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-border">
+<header
+  id="site-header"
+  data-transparent-top={transparentAtTop ? 'true' : undefined}
+  class="sticky top-0 z-50 transition-colors duration-300 bg-white/95 backdrop-blur-sm border-b border-border"
+>
   <nav class="max-w-7xl mx-auto px-6 lg:px-12 py-6">
     <div class="flex items-center justify-between">
       <div class="flex items-center gap-3">
         <a href="/">
-          <Logo class="h-16 w-auto" role="img" aria-label="EOP | Elliott Ostrander & Preston, PC" />
+          <Logo class="logo-default h-16 w-auto" role="img" aria-label="EOP | Elliott Ostrander & Preston, PC" />
         </a>
       </div>
 
@@ -57,7 +66,7 @@ const isAttorneyActive = currentPath === '/our-attorneys' || currentPath.startsW
             data-dropdown-trigger
             aria-haspopup="true"
             aria-expanded="false"
-            class={`flex items-center gap-1 text-foreground hover:text-accent transition-colors ${isPracticeAreaActive ? 'underline decoration-accent underline-offset-8' : ''}`}
+            class={`flex items-center gap-1 nav-top-link text-foreground hover:text-accent transition-colors ${isPracticeAreaActive ? 'underline decoration-accent underline-offset-8' : ''}`}
           >
             Practice Areas
             <svg data-dropdown-chevron xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-200" aria-hidden="true">
@@ -94,7 +103,7 @@ const isAttorneyActive = currentPath === '/our-attorneys' || currentPath.startsW
             data-dropdown-trigger
             aria-haspopup="true"
             aria-expanded="false"
-            class={`flex items-center gap-1 text-foreground hover:text-accent transition-colors ${isAttorneyActive ? 'underline decoration-accent underline-offset-8' : ''}`}
+            class={`flex items-center gap-1 nav-top-link text-foreground hover:text-accent transition-colors ${isAttorneyActive ? 'underline decoration-accent underline-offset-8' : ''}`}
           >
             Our Team
             <svg data-dropdown-chevron xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-200" aria-hidden="true">
@@ -128,7 +137,7 @@ const isAttorneyActive = currentPath === '/our-attorneys' || currentPath.startsW
         {otherNavLinks.map((link) => (
           <a
             href={link.href}
-            class={`text-foreground hover:text-accent transition-colors ${
+            class={`${link.class ? 'nav-cta' : 'nav-top-link'} text-foreground hover:text-accent transition-colors ${
               isActiveLink(link.href)
                 ? 'underline decoration-accent underline-offset-8'
                 : ''
@@ -139,7 +148,7 @@ const isAttorneyActive = currentPath === '/our-attorneys' || currentPath.startsW
         ))}
       </div>
 
-      <button class="md:hidden p-2 text-xl" data-menu-toggle aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle menu">
+      <button class="nav-top-link md:hidden p-2 text-xl" data-menu-toggle aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle menu">
         <span data-menu-icon-open>☰</span>
         <span data-menu-icon-close class="hidden">✕</span>
       </button>
@@ -303,5 +312,38 @@ const isAttorneyActive = currentPath === '/our-attorneys' || currentPath.startsW
         if (!dropdown.contains(e.target)) close();
       });
     });
+  </script>
+
+  <style>
+    #site-header[data-transparent-top]:not(.scrolled) {
+      background-color: transparent;
+      border-color: transparent;
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+    }
+    #site-header[data-transparent-top]:not(.scrolled) .nav-top-link {
+      color: white;
+    }
+    #site-header[data-transparent-top]:not(.scrolled) .logo-default {
+      display: block;
+    }
+  </style>
+
+  <script is:inline>
+    (function () {
+      var header = document.getElementById('site-header');
+      if (!header || header.getAttribute('data-transparent-top') !== 'true') return;
+
+      function update() {
+        if (window.scrollY > 10) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+      }
+
+      update();
+      window.addEventListener('scroll', update, { passive: true });
+    })();
   </script>
 </header>

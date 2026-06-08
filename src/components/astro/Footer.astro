@@ -1,5 +1,6 @@
 ---
 import LogoWhite from "../../images/logo-white.svg";
+import LinkedInLogo from "../../images/linkedin-logo.png";
 import firmInfo from "../../data/firm-info.json";
 
 interface CompanyLink {
@@ -177,9 +178,14 @@ const footerOnlyLinks = [
               rel={
                 isExternalUrl(social.href) ? "noopener noreferrer" : undefined
               }
-              class="text-white/70 hover:text-accent transition-colors"
+              class="text-white/70 hover:opacity-100 opacity-70 transition-opacity"
+              aria-label={social.label}
             >
-              {social.label}
+              {social.label === 'LinkedIn' ? (
+                <img src={LinkedInLogo.src} alt="LinkedIn" class="h-5 w-auto" />
+              ) : (
+                social.label
+              )}
             </a>
           ))
         }
