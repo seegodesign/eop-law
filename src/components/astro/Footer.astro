@@ -1,0 +1,189 @@
+---
+import LogoWhite from "../../images/logo-white.svg";
+import firmInfo from "../../data/firm-info.json";
+
+interface CompanyLink {
+  label: string;
+  href: string;
+}
+
+interface SocialLink {
+  label: string;
+  href: string;
+}
+
+interface Props {
+  summary?: string;
+  practiceLinks: CompanyLink[];
+  companyLinks: CompanyLink[];
+  legalLinks: CompanyLink[];
+  socialLinks?: Array<string | SocialLink>;
+  copyright?: string;
+  phone?: string;
+  addressLines?: string[];
+}
+
+const {
+  summary,
+  practiceLinks,
+  companyLinks,
+  legalLinks,
+  socialLinks,
+  copyright,
+  phone,
+  addressLines,
+} = Astro.props;
+
+const normalizeSocialLink = (item: string | SocialLink): SocialLink =>
+  typeof item === "string"
+    ? { label: item, href: "#" }
+    : { label: item.label, href: item.href || "#" };
+
+const displayedSummary = firmInfo.summary || summary || "";
+const displayedPhone = firmInfo.phone || phone || "";
+const displayedMapUrl = firmInfo.mapUrl || "";
+const displayedPhoneHref = displayedPhone ? `tel:${displayedPhone.replace(/[^+\d]/g, "")}` : "#";
+const displayedAddressLines =
+  Array.isArray(firmInfo.addressLines) && firmInfo.addressLines.length > 0
+    ? firmInfo.addressLines
+    : addressLines || [];
+const displayedCopyright = firmInfo.copyright || copyright || "";
+const displayedSocialLinks: SocialLink[] =
+  Array.isArray(firmInfo.socialLinks) && firmInfo.socialLinks.length > 0
+    ? firmInfo.socialLinks
+    : (socialLinks || []).map(normalizeSocialLink);
+
+const isExternalUrl = (href: string) => /^https?:\/\//i.test(href);
+
+const footerOnlyLinks = [
+  { label: "Accessibility", href: "/accessibility" },
+  { label: "Legal Notice & Disclaimer", href: "/legal-notice" },
+];
+
+---
+
+<footer class="bg-primary text-white py-16">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    <div class="grid md:grid-cols-5 gap-12 mb-12">
+      <div>
+        <div class="flex items-center gap-3 mb-6">
+          <LogoWhite
+            class="h-10 w-auto"
+            role="img"
+            aria-label="Elliott Ostrander & Preston, PC"
+          />
+        </div>
+        <p class="text-white/70 mb-6">{displayedSummary}</p>
+
+        <div class="space-y-3">
+          <div class="flex items-start gap-2 text-white/70">
+            <span class="mt-1 flex-shrink-0">⌂</span>
+            <a
+              href={displayedMapUrl || "#"}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-sm hover:text-accent transition-colors"
+            >
+              {
+                displayedAddressLines.map((line, index) => (
+                  <>
+                    {index > 0 && <br />}
+                    {line}
+                  </>
+                ))
+              }
+            </a>
+          </div>
+          <div class="flex items-center gap-2 text-white/70">
+            <span class="flex-shrink-0">☎</span>
+            <a href={displayedPhoneHref} class="text-sm hover:text-accent transition-colors">
+              {displayedPhone}
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="text-lg mb-4">Practice Areas</h4>
+        <ul class="space-y-2 text-white/70">
+          {
+            practiceLinks.map((link) => (
+              <li>
+                <a href={link.href} class="hover:text-accent transition-colors">
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-lg mb-4">Company</h4>
+        <ul class="space-y-2 text-white/70">
+          {
+            companyLinks.map((link) => (
+              <li>
+                <a href={link.href} class="hover:text-accent transition-colors">
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-lg mb-4">Legal</h4>
+        <ul class="space-y-2 text-white/70">
+          {
+            footerOnlyLinks.map((link) => (
+              <li>
+                <a href={link.href} class="hover:text-accent transition-colors">
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-lg mb-4">More</h4>
+        <ul class="space-y-2 text-white/70">
+          {
+            legalLinks.map((link) => (
+              <li>
+                <a href={link.href} class="hover:text-accent transition-colors">
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+
+    <div
+      class="pt-8 border-t border-white/20 flex flex-col md:flex-row justify-between items-center gap-4"
+    >
+      <p class="text-white/70">{displayedCopyright}</p>
+      <div class="flex gap-6">
+        {
+          displayedSocialLinks.map((social) => (
+            <a
+              href={social.href}
+              target={isExternalUrl(social.href) ? "_blank" : undefined}
+              rel={
+                isExternalUrl(social.href) ? "noopener noreferrer" : undefined
+              }
+              class="text-white/70 hover:text-accent transition-colors"
+            >
+              {social.label}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</footer>

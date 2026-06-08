@@ -1,0 +1,38 @@
+---
+interface Props {
+  title: string;
+  subtitle?: string;
+  backgroundImageSrc?: string;
+  containerMaxWidthClass?: string;
+  sectionClass?: string;
+}
+
+const {
+  title,
+  subtitle,
+  backgroundImageSrc,
+  containerMaxWidthClass = 'max-w-6xl',
+  sectionClass = '',
+} = Astro.props as Props;
+
+const sectionStyle = backgroundImageSrc
+  ? `background-image: url(${backgroundImageSrc});`
+  : undefined;
+---
+
+<section
+  class={`relative overflow-hidden bg-[#101624] bg-cover bg-center ${sectionClass}`}
+  style={sectionStyle}
+>
+  <div class="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-black/40"></div>
+  <div class={`relative mx-auto w-full ${containerMaxWidthClass} px-6 py-16 md:py-24`}>
+    <h1 class="font-serif text-5xl text-transparent bg-gradient-to-b from-white via-[#f0d9a0] to-[#b98935] bg-clip-text md:text-7xl pb-2">
+      {title}
+    </h1>
+    {subtitle && (
+      <p class="mt-4 max-w-3xl font-sans text-base text-white/85 md:text-lg">
+        {subtitle}
+      </p>
+    )}
+  </div>
+</section>

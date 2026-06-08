@@ -1,0 +1,55 @@
+---
+interface Highlight {
+  title: string;
+  description: string;
+}
+
+interface Props {
+  eyebrow: string;
+  heading: string;
+  lead: string;
+  body: string;
+  highlights: Highlight[];
+}
+
+const { eyebrow, heading, lead, body, highlights } = Astro.props;
+---
+
+<section id="about" class="py-32 bg-primary text-white">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <div class="relative h-[600px] lg:h-[700px]">
+        <img
+          src="/images/about-courthouse.jpg"
+          alt="Portland courthouse"
+          class="w-full h-full object-cover"
+        />
+        <div class="absolute -bottom-8 -right-8 w-64 h-64 bg-accent/20 border-4 border-accent"></div>
+      </div>
+
+      <div>
+        <div class="inline-block px-6 py-2 bg-accent/20 border border-accent mb-8">
+          <span class="text-accent">{eyebrow}</span>
+        </div>
+
+        <h2 class="text-4xl md:text-6xl mb-8">{heading}</h2>
+
+        <p class="text-lg text-white/90 mb-8 leading-relaxed">{lead}</p>
+
+        <p class="text-lg text-white/80 mb-12 leading-relaxed">{body}</p>
+
+        <div class="space-y-6">
+          {highlights.map((item) => (
+            <div class="flex items-start gap-4">
+              <span class="text-accent text-2xl">◆</span>
+              <div>
+                <h4 class="text-xl mb-2">{item.title}</h4>
+                <p class="text-white/70">{item.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
