@@ -25,4 +25,5 @@ faqs:
   - question: Can you help negotiate a record deal or production agreement?
     answer: Yes. We review and negotiate deal points including advances, royalties, ownership, creative control, and term length for recording, film, and television agreements.
 order: 5
+showCta: true
 ---

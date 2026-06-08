@@ -32,6 +32,10 @@ const practiceAreas = defineCollection({
       .array(z.object({ question: z.string(), answer: z.string() }))
       .default([]),
     order: z.number().int().default(100),
+    showCta: z.boolean().default(false),
+    ctaDescription: z.string().optional(),
+    ctaText: z.string().optional(),
+    ctaHref: z.string().optional(),
   }),
 });
 

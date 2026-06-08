@@ -25,4 +25,5 @@ faqs:
   - question: Can you represent both insurers and policyholders?
     answer: Yes. Our experience on both sides of coverage disputes gives us a thorough understanding of insurer practices and policyholder rights, which benefits whichever side we represent.
 order: 8
+showCta: true
 ---

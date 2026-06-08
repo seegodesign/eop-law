@@ -106,25 +106,25 @@ const nextCase =
             }
           </p>
         </div>
+        <!-- Stats bar -->
+        {
+          stats.length > 0 && (
+            <div class="backdrop-blur-sm py-5 border-t-1 border-accent/40">
+              <div class="mx-auto w-full max-w-5xl px-6 py-8 flex flex-wrap gap-10 md:gap-16">
+                {stats.map((stat) => (
+                  <div>
+                    <p class="font-serif text-4xl text-accent">{stat.value}</p>
+                    <p class="text-xs uppercase tracking-widest text-white/60 mt-1">
+                      {stat.label}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )
+        }
       </section>
 
-      <!-- Stats bar -->
-      {
-        stats.length > 0 && (
-          <div class="bg-primary py-5 border-t-1 border-accent/40">
-            <div class="mx-auto w-full max-w-5xl px-6 py-8 flex flex-wrap gap-10 md:gap-16">
-              {stats.map((stat) => (
-                <div>
-                  <p class="font-serif text-4xl text-accent">{stat.value}</p>
-                  <p class="text-xs uppercase tracking-widest text-white/60 mt-1">
-                    {stat.label}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        )
-      }
 
       <!-- Body -->
       <div class="bg-white">

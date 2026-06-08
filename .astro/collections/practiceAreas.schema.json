@@ -54,6 +54,19 @@
       "minimum": -9007199254740991,
       "maximum": 9007199254740991
     },
+    "showCta": {
+      "default": false,
+      "type": "boolean"
+    },
+    "ctaDescription": {
+      "type": "string"
+    },
+    "ctaText": {
+      "type": "string"
+    },
+    "ctaHref": {
+      "type": "string"
+    },
     "$schema": {
       "type": "string"
     }

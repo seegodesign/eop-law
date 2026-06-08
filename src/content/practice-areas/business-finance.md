@@ -11,6 +11,11 @@ services:
   - Mergers & acquisitions
   - Commercial lease review
   - Startup legal counsel
+order: 1
+showCta: true
+ctaDescription: ''
+ctaText: ''
+ctaHref: ''
 clientProblem:
   - Starting a business without the right legal structure can expose founders to personal liability and future disputes.
   - Unclear contracts and poorly negotiated agreements create costly surprises when deals or partnerships break down.
@@ -24,5 +29,4 @@ faqs:
     answer: Most formations can be completed within one to two weeks, depending on state filings and the complexity of your operating or shareholder agreements.
   - question: Can you assist with an acquisition?
     answer: Yes. We handle due diligence, purchase agreement negotiation, regulatory review, and closing for acquisitions of all sizes.
-order: 1
 ---

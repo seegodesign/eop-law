@@ -25,4 +25,5 @@ faqs:
   - question: How long does an affordable housing transaction take to close?
     answer: Complex LIHTC transactions typically take six to twelve months from initial structuring to closing, depending on regulatory approvals, financing commitments, and construction readiness. We work to keep closings on schedule.
 order: 9
+showCta: true
 ---

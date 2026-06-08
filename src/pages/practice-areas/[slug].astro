@@ -57,24 +57,11 @@ const yearsOfExperience = new Date().getFullYear() - 1995;
         subtitle={description}
         backgroundImageSrc={courthousePanelImg.src}
         containerMaxWidthClass="max-w-7xl"
+        showCta={area.data.showCta}
+        ctaDescription={area.data.ctaDescription}
+        ctaText={area.data.ctaText}
+        ctaHref={area.data.ctaHref}
       />
-
-      <!-- Hero CTA bar -->
-      <div class="bg-primary py-5 border-t-1 border-accent/40">
-        <div
-          class="mx-auto w-full max-w-5xl px-6 flex flex-wrap items-center justify-between gap-4"
-        >
-          <p class="text-white/90 text-sm md:text-base font-sans">
-            Ready to discuss your matter? Our attorneys are here to help.
-          </p>
-          <a
-            href="/contact-us"
-            class="inline-flex items-center justify-center px-7 py-3 bg-accent text-accent-foreground font-sans font-semibold text-sm whitespace-nowrap transition-colors hover:bg-white hover:text-primary"
-          >
-            Schedule Your Free Case Evaluation
-          </a>
-        </div>
-      </div>
 
       <div class="mx-auto w-full max-w-7xl px-6 py-12 md:py-16">
         <div class="grid lg:grid-cols-[1fr_320px] gap-12 lg:gap-16 items-start">
