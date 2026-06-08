@@ -12,7 +12,7 @@ const attorneys = defineCollection({
     role: z.string().optional(),
     specialty: z.string(),
     photo: z.string().optional(),
-    email: z.string().email().optional(),
+    email: z.string().email(),
     order: z.number().int().default(100),
   }),
 });

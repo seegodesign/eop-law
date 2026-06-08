@@ -4,8 +4,9 @@ practiceAreas:
   - Business
   - Finance
   - Real Estate
-photo: /uploads/jerome-elliot.png
+photo: /uploads/jerome-elliot.webp
 specialty: Jerry assists clients primarily on business and real estate matters, including formations, financings, and transactions.
+email: jerry@eoplaw.com
 order: 1
 ---
 

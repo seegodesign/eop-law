@@ -6,6 +6,7 @@ practiceAreas:
   - New Technologies
 photo: /uploads/greg-caldwell.webp
 specialty: ''
+email: greg@eoplaw.com
 order: 1
 ---
 

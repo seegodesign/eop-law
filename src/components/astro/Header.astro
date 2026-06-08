@@ -3,14 +3,14 @@ import Logo from '../../images/logo.svg';
 import { getCollection } from 'astro:content';
 
 const practiceAreaItems = (await getCollection('practiceAreas'))
-  .sort((a, b) => a.data.order - b.data.order)
+  .sort((a, b) => a.data.title.localeCompare(b.data.title))
   .map((entry) => ({
     href: `/practice-areas/${entry.id}`,
     label: entry.data.title,
   }));
 
 const attorneyItems = (await getCollection('attorneys'))
-  .sort((a, b) => a.data.order - b.data.order)
+  .sort((a, b) => a.data.name.split(' ')[0].localeCompare(b.data.name.split(' ')[0]))
   .map((entry) => ({
     href: `/our-attorneys/${entry.id}`,
     label: entry.data.name,
@@ -19,7 +19,6 @@ const attorneyItems = (await getCollection('attorneys'))
 const otherNavLinks = [
   { href: '/about', label: 'About' },
   { href: '/case-studies', label: 'Case Studies' },
-  // { href: '/resources', label: 'Resources' },
   {
     href: '/contact-us',
     label: 'Contact',

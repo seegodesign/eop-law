@@ -15,7 +15,7 @@ interface ListingArea {
 }
 
 const listingAreas: ListingArea[] = (await getCollection('practiceAreas'))
-  .sort((a, b) => a.data.order - b.data.order)
+  .sort((a, b) => a.data.title.localeCompare(b.data.title))
   .map((entry) => ({
     title: entry.data.title,
     slug: entry.id,

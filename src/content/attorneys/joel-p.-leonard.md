@@ -5,8 +5,9 @@ practiceAreas:
   - Commercial Construction
   - Trade Secrets
   - Insurance
-photo: ''
+photo: /uploads/joel-leonard.webp
 specialty: ''
+email: joel@eoplaw.com
 order: 100
 ---
 

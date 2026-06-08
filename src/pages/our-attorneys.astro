@@ -21,7 +21,7 @@ const excerptText = (value: string, max = 200) =>
   value.length <= max ? value : `${value.slice(0, max).trimEnd()}...`;
 
 const attorneyEntries = (await getCollection("attorneys")).sort(
-  (a, b) => a.data.order - b.data.order,
+  (a, b) => a.data.name.split(' ')[0].localeCompare(b.data.name.split(' ')[0]),
 );
 
 const attorneys = attorneyEntries.map((entry) => {
@@ -50,7 +50,7 @@ const attorneys = attorneyEntries.map((entry) => {
     <main class="flex-1 bg-white">
       <PageHero
         title="Our Attorneys"
-        subtitle="Trusted counsel with deep experience across business, litigation, and estate matters."
+        subtitle="Trusted counsel with deep experience across a wide range of legal matters."
         backgroundImageSrc={courthousePanelImg.src}
         containerMaxWidthClass="max-w-6xl"
       />
