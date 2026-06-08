@@ -16,7 +16,7 @@ const { eyebrow, heading, items } = Astro.props;
 
 <section id="resources" class="py-32 bg-accent/5">
   <div class="max-w-7xl mx-auto px-6 lg:px-12">
-    <div class="text-center mb-20">
+    <div data-motion="motion-preset-slide-up motion-duration-700" class="text-center mb-20">
       <div class="inline-block px-6 py-2 bg-accent/10 border border-accent/30 mb-6">
         <span class="text-accent-foreground">{eyebrow}</span>
       </div>
@@ -24,8 +24,8 @@ const { eyebrow, heading, items } = Astro.props;
     </div>
 
     <div class="grid md:grid-cols-3 gap-8">
-      {items.map((testimonial) => (
-        <article class="bg-white p-10 border border-border">
+      {items.map((testimonial, i) => (
+        <article data-motion="motion-preset-slide-up motion-duration-500" data-motion-delay={String(i * 150)} class="bg-white p-10 border border-border">
           <div class="flex gap-0.5 mb-4" aria-label="5 out of 5 stars">
             {Array.from({ length: 5 }).map(() => (
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 text-yellow-400" aria-hidden="true">

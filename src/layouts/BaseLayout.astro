@@ -33,5 +33,39 @@ const { title, description } = Astro.props;
         });
       });
     </script>
+
+    <style>
+      [data-motion] { opacity: 0; }
+      @media (prefers-reduced-motion: reduce) {
+        [data-motion] { opacity: 1 !important; animation: none !important; }
+      }
+    </style>
+
+    <script is:inline>
+      (function () {
+        if (typeof IntersectionObserver === 'undefined') {
+          document.querySelectorAll('[data-motion]').forEach(function (el) {
+            el.style.opacity = '1';
+          });
+          return;
+        }
+
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            var el = entry.target;
+            var delay = el.getAttribute('data-motion-delay');
+            if (delay) el.style.animationDelay = delay + 'ms';
+            var classes = (el.getAttribute('data-motion') || '').split(' ').filter(Boolean);
+            el.classList.add.apply(el.classList, classes);
+            observer.unobserve(el);
+          });
+        }, { threshold: 0.12 });
+
+        document.querySelectorAll('[data-motion]').forEach(function (el) {
+          observer.observe(el);
+        });
+      })();
+    </script>
   </body>
 </html>
