@@ -14,7 +14,7 @@ interface Props {
 }
 
 const { badge, heading, subheading, primaryCta, secondaryCta, stats } = Astro.props;
-import bg from "../../images/pdx.avif";
+import bg from "../../images/pdx2.avif";
 
 const FOUNDING_YEAR = 1995;
 const yearsOfExperience = new Date().getFullYear() - FOUNDING_YEAR;
@@ -33,18 +33,17 @@ const computedStats = stats.map((stat) =>
   <div class="absolute inset-0 bg-gradient-to-b from-primary/90 to-primary/60 -z-10"></div>
 
   <div class="relative max-w-7xl mx-auto px-6 lg:px-12 pt-40 pb-24 lg:pt-52 lg:pb-32 text-center">
-    <div class="motion-preset-fade motion-duration-500 inline-block px-6 py-2 mb-12 text-lg font-serif">
+    <div class="motion-preset-fade motion-duration-500 hidden md:inline-block px-6 py-2 mb-12 text-lg font-serif">
       <span class="text-accent">{badge}</span>
     </div>
 
     <h1
-      class="motion-preset-slide-up motion-duration-700 motion-delay-200 text-5xl md:text-7xl lg:text-8xl text-white mb-8 max-w-5xl mx-auto"
-      style="font-size: var(--text-hero); line-height: 1.1; font-family: var(--font-serif);"
+      class="motion-preset-slide-up motion-duration-700 motion-delay-200 text-3xl md:text-5xl lg:text-6xl text-white mb-8 max-w-5xl mx-auto"
     >
       {heading}
     </h1>
 
-    <p class="motion-preset-slide-up motion-duration-700 motion-delay-300 text-lg text-white/90 max-w-3xl mx-auto mb-12 leading-relaxed">{subheading}</p>
+    <p class="motion-preset-slide-up motion-duration-700 motion-delay-300 text-md md:text-lg text-white/90 max-w-3xl mx-auto mb-12 leading-relaxed">{subheading}</p>
 
     <div class="motion-preset-slide-up motion-duration-700 motion-delay-500 flex flex-col sm:flex-row gap-6 justify-center items-center">
       <a href="#contact" class="group px-10 py-5 bg-accent text-accent-foreground hover:bg-white transition-all flex items-center gap-3 min-w-[240px] justify-center font-bold">

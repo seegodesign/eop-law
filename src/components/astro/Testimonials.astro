@@ -23,9 +23,9 @@ const { eyebrow, heading, items } = Astro.props;
       <h2 class="text-4xl md:text-6xl text-primary mb-6">{heading}</h2>
     </div>
 
-    <div class="grid md:grid-cols-3 gap-8">
+    <div class="testimonials-carousel flex gap-6 overflow-x-auto snap-x snap-mandatory pb-6 md:pb-0 md:grid md:grid-cols-3 md:gap-8">
       {items.map((testimonial, i) => (
-        <article data-motion="motion-preset-slide-up motion-duration-500" data-motion-delay={String(i * 150)} class="bg-white p-10 border border-border">
+        <article data-motion="motion-preset-slide-up motion-duration-500" data-motion-delay={String(i * 150)} class="bg-white p-10 border border-border snap-start shrink-0 w-[85vw] sm:w-[65vw] md:w-auto md:shrink">
           <div class="flex gap-0.5 mb-4" aria-label="5 out of 5 stars">
             {Array.from({ length: 5 }).map(() => (
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 text-yellow-400" aria-hidden="true">
@@ -41,5 +41,17 @@ const { eyebrow, heading, items } = Astro.props;
         </article>
       ))}
     </div>
+
+    <p class="mt-4 text-center text-muted-foreground/40 text-xs tracking-widest uppercase md:hidden">Swipe to explore</p>
   </div>
 </section>
+
+<style>
+  .testimonials-carousel {
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .testimonials-carousel::-webkit-scrollbar {
+    display: none;
+  }
+</style>

@@ -14,7 +14,7 @@ interface Props {
 const { eyebrow, heading, description, steps } = Astro.props;
 ---
 
-<section class="py-32 bg-background">
+<section class="py-8 md:py-16 lg:py-32 bg-background">
   <div class="max-w-7xl mx-auto px-6 lg:px-12">
     <div class="grid lg:grid-cols-2 gap-16 items-center">
       <div data-motion="motion-preset-slide-right motion-duration-700">
@@ -41,7 +41,7 @@ const { eyebrow, heading, description, steps } = Astro.props;
         </div>
       </div>
 
-      <div data-motion="motion-preset-slide-left motion-duration-700" class="relative h-[600px] lg:h-[700px] order-first lg:order-last">
+      <div data-motion="motion-preset-slide-left motion-duration-700" class="hidden lg:block relative h-[600px] lg:h-[700px] order-first lg:order-last">
         <img
           src="/images/process-handshake.jpg"
           alt="Business handshake"

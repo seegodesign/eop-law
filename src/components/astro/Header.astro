@@ -53,12 +53,12 @@ const isAttorneyActive = currentPath === '/our-attorneys' || currentPath.startsW
     <div class="flex items-center justify-between">
       <div class="flex items-center gap-3">
         <a href="/">
-          <Logo class="logo-default h-16 w-auto" role="img" aria-label="EOP | Elliott Ostrander & Preston, PC" />
+          <Logo class="logo-default h-14 w-auto" role="img" aria-label="EOP | Elliott Ostrander & Preston, PC" />
         </a>
       </div>
 
       <!-- Desktop nav -->
-      <div class="hidden md:flex items-center gap-10">
+      <div class="hidden lg:flex items-center gap-10">
 
         <!-- Practice Areas dropdown -->
         <div class="relative" data-dropdown>
@@ -148,14 +148,17 @@ const isAttorneyActive = currentPath === '/our-attorneys' || currentPath.startsW
         ))}
       </div>
 
-      <button class="nav-top-link md:hidden p-2 text-xl" data-menu-toggle aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle menu">
-        <span data-menu-icon-open>☰</span>
-        <span data-menu-icon-close class="hidden">✕</span>
+      <button class="nav-top-link lg:hidden p-2" data-menu-toggle aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle menu">
+        <svg class="burger-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <line class="burger-line line-1" x1="3" y1="6" x2="21" y2="6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <line class="burger-line line-2" x1="3" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <line class="burger-line line-3" x1="3" y1="18" x2="21" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
       </button>
     </div>
 
     <!-- Mobile menu -->
-    <div id="mobile-menu" class="md:hidden mt-6 pt-6 border-t border-border space-y-4 hidden" data-mobile-menu>
+    <div id="mobile-menu" class="hidden lg:hidden mt-6 pt-6 border-t border-border space-y-4" data-mobile-menu>
 
       <!-- Practice Areas expandable -->
       <div>
@@ -178,7 +181,7 @@ const isAttorneyActive = currentPath === '/our-attorneys' || currentPath.startsW
             </svg>
           </button>
         </div>
-        <div id="mobile-pa-list" class="hidden pl-4 space-y-1 pb-2">
+        <div id="mobile-pa-list" class="mobile-sub-list hidden pl-4 space-y-1 pb-2">
           {practiceAreaItems.map((item) => (
             <a
               href={item.href}
@@ -211,7 +214,7 @@ const isAttorneyActive = currentPath === '/our-attorneys' || currentPath.startsW
             </svg>
           </button>
         </div>
-        <div id="mobile-att-list" class="hidden pl-4 space-y-1 pb-2">
+        <div id="mobile-att-list" class="mobile-sub-list hidden pl-4 space-y-1 pb-2">
           {attorneyItems.map((item) => (
             <a
               href={item.href}
@@ -246,15 +249,13 @@ const isAttorneyActive = currentPath === '/our-attorneys' || currentPath.startsW
     // Mobile hamburger
     var menuButton = document.querySelector('[data-menu-toggle]');
     var mobileMenu = document.querySelector('[data-mobile-menu]');
-    var openIcon = document.querySelector('[data-menu-icon-open]');
-    var closeIcon = document.querySelector('[data-menu-icon-close]');
+    var siteHeader = document.getElementById('site-header');
 
-    if (menuButton && mobileMenu && openIcon && closeIcon) {
+    if (menuButton && mobileMenu) {
       menuButton.addEventListener('click', function () {
-        var isHidden = mobileMenu.classList.toggle('hidden');
-        openIcon.classList.toggle('hidden', !isHidden);
-        closeIcon.classList.toggle('hidden', isHidden);
-        menuButton.setAttribute('aria-expanded', String(!isHidden));
+        var isNowHidden = mobileMenu.classList.toggle('hidden');
+        menuButton.setAttribute('aria-expanded', String(!isNowHidden));
+        if (siteHeader) siteHeader.classList.toggle('menu-open', !isNowHidden);
       });
     }
 
@@ -265,9 +266,9 @@ const isAttorneyActive = currentPath === '/our-attorneys' || currentPath.startsW
       var chevron = btn.querySelector('svg');
       if (!list || !chevron) return;
       btn.addEventListener('click', function () {
-        var isHidden = list.classList.toggle('hidden');
-        chevron.style.transform = isHidden ? '' : 'rotate(180deg)';
-        btn.setAttribute('aria-expanded', String(!isHidden));
+        var isNowHidden = list.classList.toggle('hidden');
+        chevron.style.transform = isNowHidden ? '' : 'rotate(180deg)';
+        btn.setAttribute('aria-expanded', String(!isNowHidden));
       });
     });
 
@@ -314,7 +315,7 @@ const isAttorneyActive = currentPath === '/our-attorneys' || currentPath.startsW
     });
   </script>
 
-  <style>
+  <style is:global>
     #site-header[data-transparent-top]:not(.scrolled) {
       background-color: transparent;
       border-color: transparent;
@@ -324,8 +325,44 @@ const isAttorneyActive = currentPath === '/our-attorneys' || currentPath.startsW
     #site-header[data-transparent-top]:not(.scrolled) .nav-top-link {
       color: white;
     }
+    #site-header[data-transparent-top].menu-open .nav-top-link {
+      color: oklch(0.145 0 0);
+    }
+    #site-header[data-transparent-top].menu-open {
+      background-color: rgb(255 255 255 / 0.95);
+      border-color: var(--border);
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+    }
     #site-header[data-transparent-top]:not(.scrolled) .logo-default {
       display: block;
+    }
+    /* Mobile menu & sub-menu slide-down animations */
+    @keyframes mobileSlideDown {
+      from { opacity: 0; transform: translateY(-8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    #mobile-menu:not(.hidden) {
+      animation: mobileSlideDown 0.25s ease forwards;
+    }
+    .mobile-sub-list:not(.hidden) {
+      animation: mobileSlideDown 0.2s ease forwards;
+    }
+    /* Burger → X animation */
+    .burger-line {
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      transform-box: fill-box;
+      transform-origin: center;
+    }
+    [data-menu-toggle][aria-expanded="true"] .line-1 {
+      transform: translateY(6px) rotate(45deg);
+    }
+    [data-menu-toggle][aria-expanded="true"] .line-2 {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+    [data-menu-toggle][aria-expanded="true"] .line-3 {
+      transform: translateY(-6px) rotate(-45deg);
     }
   </style>
 
