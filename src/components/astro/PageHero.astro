@@ -28,7 +28,7 @@ const ctaText = ctaTextRaw || "Schedule Your Free Case Evaluation";
 const ctaHref = ctaHrefRaw || "/contact-us";
 
 const sectionStyle = backgroundImageSrc
-  ? `background-image: url(${backgroundImageSrc}); background-attachment: fixed; background-size: contain; background-position: center;`
+  ? `background-image: url(${backgroundImageSrc}); background-size: contain; background-position: center;`
   : undefined;
 ---
 
@@ -74,3 +74,11 @@ const sectionStyle = backgroundImageSrc
     </div>
   )}
 </section>
+
+<style>
+  @media (hover: hover) {
+    section[style*="background-image"] {
+      background-attachment: fixed;
+    }
+  }
+</style>

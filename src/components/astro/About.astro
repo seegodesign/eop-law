@@ -1,4 +1,7 @@
 ---
+import HandshakeIcon from '../../icons/handshake.svg';
+import LightbulbIcon from '../../icons/lightbulb.svg';
+import ScalesIcon from '../../icons/scales.svg';
 import bgImage from '../../images/lawyer-working-with-documents.webp';
 
 interface Highlight {
@@ -15,10 +18,12 @@ interface Props {
 }
 
 const { eyebrow, heading, lead, body, highlights } = Astro.props;
+
+const highlightIcons = [HandshakeIcon, ScalesIcon, LightbulbIcon];
 ---
 
-<section id="about" class="py-8 md:py-16 lg:py-32 bg-primary text-white relative overflow-hidden"
-  style={`background-image: url(${bgImage.src}); background-size: cover; background-position: center; background-attachment: fixed;`}
+<section id="about" class="about-section py-8 md:py-16 lg:py-32 bg-primary text-white relative overflow-hidden"
+  style={`background-image: url(${bgImage.src}); background-size: cover; background-position: center;`}
 >
   <div class="absolute inset-0 bg-primary/90"></div>
   <div class="relative max-w-7xl mx-auto px-6 lg:px-12">
@@ -44,17 +49,31 @@ const { eyebrow, heading, lead, body, highlights } = Astro.props;
         <p class="text-md text-white/80 mb-12 leading-relaxed">{body}</p>
 
         <div class="space-y-6">
-          {highlights.map((item) => (
+          {highlights.map((item, i) => {
+            const Icon = highlightIcons[i];
+
+            return (
             <div class="flex items-start gap-4">
-              <span class="text-accent text-2xl">◆</span>
+              <span class="text-accent flex-shrink-0 mt-1">
+                {Icon && <Icon class="h-6 w-6" aria-hidden="true" />}
+              </span>
               <div>
                 <h4 class="text-xl mb-2">{item.title}</h4>
                 <p class="text-white/70">{item.description}</p>
               </div>
             </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<style>
+  @media (hover: hover) {
+    .about-section {
+      background-attachment: fixed;
+    }
+  }
+</style>

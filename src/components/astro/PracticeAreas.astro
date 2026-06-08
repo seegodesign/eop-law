@@ -19,8 +19,8 @@ const { eyebrow, heading, description, items } = Astro.props;
 
 <section
   id="practice"
-  class="py-32 relative"
-  style={`background-image: url(${bg.src}); background-attachment: fixed; background-size: cover; background-position: center;`}
+  class="practice-section py-32 relative"
+  style={`background-image: url(${bg.src}); background-size: cover; background-position: center;`}
 >
   <div class="absolute inset-0 bg-primary/95"></div>
   <div class="relative max-w-7xl mx-auto px-6 lg:px-12">
@@ -56,6 +56,11 @@ const { eyebrow, heading, description, items } = Astro.props;
 </section>
 
 <style>
+  @media (hover: hover) {
+    .practice-section {
+      background-attachment: fixed;
+    }
+  }
   .practice-carousel {
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;

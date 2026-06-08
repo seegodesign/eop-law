@@ -226,6 +226,12 @@ const isAttorneyActive = currentPath === '/our-attorneys' || currentPath.startsW
         </div>
       </div>
 
+      <a
+        href="/resources"
+        class={`block text-foreground hover:text-accent py-2 transition-colors ${isActiveLink('/resources') ? 'underline decoration-accent underline-offset-4' : ''}`}
+      >
+        Resources
+      </a>
       {otherNavLinks.map((link) => (
         <a
           href={link.href}
