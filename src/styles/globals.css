@@ -57,6 +57,10 @@
 @import "tailwindcss";
 @plugin "tailwindcss-motion";
 
+@media (prefers-reduced-motion: reduce) {
+  [data-motion] { opacity: 1 !important; animation: none !important; }
+}
+
 @custom-variant dark (&:is(.dark *));
 
 :root {
